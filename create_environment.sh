@@ -24,18 +24,18 @@ cat > "$root_dir/modules/functions.sh" << 'EOF'
 # Function to read submissions file and output students who have not submitted
 function check_submissions {
     local submissions_file=$1
-    echo "Checking submissions in \$submissions_file"
+    echo "Checking submissions in $submissions_file"
 
     # Skip the header and iterate through the lines
     while IFS=, read -r student assignment status; do
-        student=\$(echo "\$student" | xargs)
-        assignment=\$(echo "\$assignment" | xargs)
-        status=\$(echo "\$status" | xargs)
+        student=$(echo "$student" | xargs)
+        assignment=$(echo "$assignment" | xargs)
+        status=$(echo "$status" | xargs)
 
-        if [[ "\$assignment" == "\$ASSIGNMENT" && "\$status" == "not submitted" ]]; then
-            echo "Reminder: \$student has not submitted the \$ASSIGNMENT assignment!"
+        if [[ "$assignment" == "$ASSIGNMENT" && "$status" == "not submitted" ]]; then
+            echo "Reminder: $student has not submitted the $ASSIGNMENT assignment!"
         fi
-    done < <(tail -n +2 "\$submissions_file")
+    done < <(tail -n +2 "$submissions_file")
 }
 EOF
 
@@ -49,11 +49,11 @@ source ./modules/functions.sh
 
 submissions_file="./assets/submissions.txt"
 
-echo "Assignment: \$ASSIGNMENT"
-echo "Days remaining to submit: \$DAYS_REMAINING days"
+echo "Assignment: $ASSIGNMENT"
+echo "Days remaining to submit: $DAYS_REMAINING days"
 echo "--------------------------------------------"
 
-check_submissions \$submissions_file
+check_submissions $submissions_file
 EOF
 
 # Creating and populating submissions.txt with 10 students
