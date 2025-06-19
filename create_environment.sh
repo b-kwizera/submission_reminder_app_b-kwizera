@@ -8,7 +8,7 @@ root_dir="submission_reminder_${name}"
 mkdir -p "$root_dir"
 
 # Creating subdirectories
-mkdir -p "$root_dir"/{assets,config,modules,scripts}
+mkdir -p "$root_dir"/{assets,config,modules,app}
 
 # Creating and populating config.env
 cat > "$root_dir/config/config.env" << EOF
@@ -40,7 +40,7 @@ function check_submissions {
 EOF
 
 # Creating and populating reminder.sh
-cat > "$root_dir/scripts/reminder.sh" << 'EOF'
+cat > "$root_dir/app/reminder.sh" << 'EOF'
 #!/bin/bash
 
 # Source environment variables and helper functions
@@ -72,7 +72,7 @@ Sharon, Git, not submitted
 EOF
 
 # Creating and populating startup.sh 
-cat > "$root_dir/scripts/startup.sh" << 'EOF'
+cat > "$root_dir./startup.sh" << 'EOF'
 #!/bin/bash
 bash ./scripts/reminder.sh
 EOF
