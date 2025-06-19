@@ -74,7 +74,7 @@ EOF
 # Creating and populating startup.sh 
 cat > "$root_dir./startup.sh" << 'EOF'
 #!/bin/bash
-bash ./scripts/reminder.sh
+bash ./app/reminder.sh
 EOF
 
 # Making all .sh files executable
