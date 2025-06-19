@@ -10,9 +10,6 @@ mkdir -p "$root_dir"
 # Creating subdirectories
 mkdir -p "$root_dir"/{assets,config,modules,scripts}
 
-# Creating image.png file 
-touch "$root_dir/image.png"
-
 # Creating and populating config.env
 cat > "$root_dir/config/config.env" << EOF
 # This is the config file
@@ -59,7 +56,7 @@ echo "--------------------------------------------"
 check_submissions \$submissions_file
 EOF
 
-# Creating and populating submissions.txt with 9 students
+# Creating and populating submissions.txt with 10 students
 cat > "$root_dir/assets/submissions.txt" << EOF
 student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
